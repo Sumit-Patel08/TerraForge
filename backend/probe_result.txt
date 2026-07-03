@@ -1,0 +1,16 @@
+torch.__version__: 2.5.1+cu124
+torch.version.__version__: 2.5.1+cu124
+
+--- Direct load attempt ---
+SUCCESS direct! Keys: 512
+
+--- Version spoof attempt ---
+Spoofed to: 2.6.0
+SUCCESS with spoof! Keys: 512
+FAILED with spoof: 
+            Some tensors share memory, this will lead to duplicate memory on disk and potential differences when loading them again: [{'model.decoder.embed_tokens.weight', 'model.shared.weight', 'model.encoder.embed_tokens.weight', 'lm_head.weight'}].
+            A potential way to correctly save your model is to use `save_model`.
+            More information at https://huggingface.co/docs/safetensors/torch_shared_tensors
+            
+
+DONE

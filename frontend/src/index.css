@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Vibrant light theme inspired by Urban Intel AI */
+    --bg-base: 210 40% 97%;
+    --bg-card: 0 0% 100%;
+    --bg-elevated: 210 40% 98%;
+    --border-default: 214 32% 88%;
+
+    /* TerraForge brand colors — vivid & clean */
+    --accent-green: 152 78% 38%;
+    --accent-blue: 217 89% 57%;
+    --accent-red: 4 90% 58%;
+    --accent-amber: 36 95% 52%;
+    --accent-cyan: 188 88% 48%;
+    --accent-purple: 262 84% 60%;
+    --accent-orange: 25 96% 55%;
+
+    /* Shadcn UI design tokens */
+    --background: var(--bg-base);
+    --foreground: 222 47% 10%;
+    --card: var(--bg-card);
+    --card-foreground: 222 47% 10%;
+    --popover: var(--bg-card);
+    --popover-foreground: 222 47% 10%;
+    --primary: var(--accent-green);
+    --primary-foreground: 0 0% 100%;
+    --secondary: var(--bg-elevated);
+    --secondary-foreground: 222 47% 10%;
+    --muted: var(--bg-elevated);
+    --muted-foreground: 215 16% 46%;
+    --accent: var(--bg-elevated);
+    --accent-foreground: 222 47% 10%;
+    --destructive: var(--accent-red);
+    --destructive-foreground: 0 0% 100%;
+    --border: var(--border-default);
+    --input: var(--border-default);
+    --ring: var(--accent-green);
+    --radius: 0.875rem;
+
+    --sidebar-background: var(--bg-card);
+    --sidebar-foreground: 222 47% 10%;
+    --sidebar-primary: var(--accent-green);
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: var(--bg-elevated);
+    --sidebar-accent-foreground: 222 47% 10%;
+    --sidebar-border: var(--border-default);
+    --sidebar-ring: var(--accent-green);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -20%, hsla(152, 78%, 38%, 0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 80% 80%, hsla(217, 89%, 57%, 0.05) 0%, transparent 65%);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+
+  /* ── Fonts ── */
+  .font-display {
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  .font-mono-data {
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ── Text gradients ── */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--accent-green)), hsl(var(--accent-blue)));
+  }
+
+  .text-gradient-warm {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--accent-amber)), hsl(var(--accent-orange)));
+  }
+
+  .text-gradient-fire {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--accent-red)), hsl(var(--accent-amber)));
+  }
+
+  /* ── Cards ── */
+  .card-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.10), 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  .card-glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+
+  /* ── Colored stat cards ── */
+  .card-fire {
+    background: linear-gradient(135deg, hsl(4 90% 97%), hsl(36 95% 96%));
+    border: 1px solid hsl(4 90% 88%);
+  }
+
+  .card-air {
+    background: linear-gradient(135deg, hsl(188 88% 96%), hsl(217 89% 96%));
+    border: 1px solid hsl(188 88% 84%);
+  }
+
+  .card-agri {
+    background: linear-gradient(135deg, hsl(152 78% 95%), hsl(152 78% 92%));
+    border: 1px solid hsl(152 78% 80%);
+  }
+
+  .card-econ {
+    background: linear-gradient(135deg, hsl(262 84% 96%), hsl(217 89% 96%));
+    border: 1px solid hsl(262 84% 84%);
+  }
+
+  /* ── Badges / Pills ── */
+  .badge-live {
+    @apply inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full;
+    background: linear-gradient(135deg, hsl(152 78% 38% / 0.12), hsl(217 89% 57% / 0.12));
+    color: hsl(var(--accent-green));
+    border: 1px solid hsl(152 78% 38% / 0.25);
+  }
+
+  .badge-live::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: hsl(var(--accent-green));
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all duration-200;
+    background: linear-gradient(135deg, hsl(var(--accent-green)), hsl(152 78% 32%));
+    box-shadow: 0 2px 8px hsl(152 78% 38% / 0.35), 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 6px 20px hsl(152 78% 38% / 0.45), 0 2px 6px rgba(0, 0, 0, 0.12);
+    transform: translateY(-1px);
+  }
+
+  /* ── Section chip / label ── */
+  .section-chip {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4;
+    background: linear-gradient(135deg, hsl(var(--accent-green) / 0.1), hsl(var(--accent-blue) / 0.1));
+    color: hsl(var(--accent-green));
+    border: 1px solid hsl(var(--accent-green) / 0.2);
+  }
+
+  /* ── Progress bars ── */
+  .progress-track {
+    @apply w-full h-1.5 rounded-full overflow-hidden;
+    background: hsl(214 32% 91%);
+  }
+
+  .progress-fill {
+    @apply h-full rounded-full;
+  }
+
+  /* ── Icon container variants ── */
+  .icon-fire {
+    background: linear-gradient(135deg, hsl(4 90% 94%), hsl(36 95% 93%));
+    color: hsl(var(--accent-red));
+  }
+
+  .icon-air {
+    background: linear-gradient(135deg, hsl(188 88% 92%), hsl(217 89% 93%));
+    color: hsl(var(--accent-cyan));
+  }
+
+  .icon-agri {
+    background: linear-gradient(135deg, hsl(152 78% 90%), hsl(152 78% 88%));
+    color: hsl(var(--accent-green));
+  }
+
+  .icon-econ {
+    background: linear-gradient(135deg, hsl(262 84% 93%), hsl(217 89% 93%));
+    color: hsl(var(--accent-purple));
+  }
+
+  .icon-cattle {
+    background: linear-gradient(135deg, hsl(36 95% 92%), hsl(25 96% 92%));
+    color: hsl(var(--accent-amber));
+  }
+
+  .icon-blue {
+    background: linear-gradient(135deg, hsl(217 89% 93%), hsl(217 89% 90%));
+    color: hsl(var(--accent-blue));
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border-default)) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background: hsl(var(--border-default));
+  }
+}
+
+/* ── Keyframes ── */
+@keyframes pulse-dot {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: scale(0.85);
+  }
+}
+
+@keyframes float-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes glow-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px hsl(152 78% 38% / 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 40px hsl(152 78% 38% / 0.5);
+  }
+}

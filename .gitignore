@@ -1,0 +1,89 @@
+# TerraForge Master .gitignore
+
+# ---------------------------------------------------------------------
+# 🛑 CRITICAL HACKATHON RULES
+# ---------------------------------------------------------------------
+# Do NOT track datasets (CSVs, Excel)
+*.csv
+*.tsv
+*.xlsx
+*.xls
+data/
+datasets/
+
+# Do NOT track ML Models (Huge files > 100MB)
+*.pt
+*.bin
+*.safetensors
+*.onnx
+*.pkl
+*.joblib
+*.h5
+*.hd5
+backend/models/
+models/
+
+# ---------------------------------------------------------------------
+# 🐍 Python & Backend (FastAPI / Jupyter)
+# ---------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# ---------------------------------------------------------------------
+# 🌐 Node.js & Frontend (Next.js)
+# ---------------------------------------------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Next.js
+.next/
+out/
+build/
+
+# ---------------------------------------------------------------------
+# 💻 OS & IDE Files
+# ---------------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.vscode/
+.idea/
+*.suo
+*.user
+
+# Supabase Local
+supabase/.temp/
+supabase/.branch/
